@@ -33,8 +33,8 @@ function api_usuario_put($request) {
 
       wp_update_user($response);
       
-      update_user_meta( $user_id, "rua", $rua,);
       update_user_meta( $user_id, "cep", $cep,);
+      update_user_meta( $user_id, "rua", $rua,);
       update_user_meta( $user_id, "numero", $numero,);
       update_user_meta( $user_id, "bairro", $bairro,);
       update_user_meta( $user_id, "cidade", $cidade,);
@@ -53,8 +53,8 @@ function api_usuario_put($request) {
 function registrar_api_usuario_put(){
   register_rest_route('api', '/usuario', array(
     array(
-      // "methods" => "PUT", // POST, PUT, DELETE
-      "methods" => WP_REST_Service::EDITABLE,
+      // "methods" => WP_REST_Service::EDITABLE,
+      "methods" => "PUT", // POST, PUT, DELETE
       "callback" => "api_usuario_put",
     ),
   ));
